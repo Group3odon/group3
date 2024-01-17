@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenant Information</title>
+</head>
+<body>
+    <h1>Tenant Information</h1>
+    <p>Name: {{ tenant['name'] }}</p>
+    <p>Email: {{ tenant['email'] }}</p>
+    <p>Phone: {{ tenant['phone'] }}</p>
+    <p>Room Number: {{ tenant['room_number'] }}</p>
+    <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+</body>
+</html>
+
+{% extends 'index.html' %}
+
+{% block content %}
+    <h2>Tenant Information</h2>
+    <p>Name: {{ tenant['name'] }}</p>
+    <p>Email: {{ tenant['email'] }}</p>
+    <p>Phone: {{ tenant['phone'] }}</p>
+    <p>Room Number: {{ tenant['room_number'] }}</p>
+{% endblock %}

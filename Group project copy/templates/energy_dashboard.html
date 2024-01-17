@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Consumption Dashboard</title>
+</head>
+<body>
+    <h1>Energy Consumption Dashboard</h1>
+    <ul>
+        {% for data in energy_dashboard_content %}
+            <li>
+                <h2>{{ data['name'] }}</h2>
+                <p>Energy Consumption: {{ data['consumption'] }} kWh</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!-- addblocker.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blocker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/addblocker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav>
+        <div class="welcome-container">
+            <p class="welcome">Welcome, {{ session['username'] }}!</p>
+            <div class="divider"></div>
+        </div>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Energy Consumption</a></li>
+            <li><a href="{{ url_for('add_blocker') }}">Add Blocker</a></li>
+            <li><a href="{{ url_for('view_complaints') }}">Complaints</a></li>
+            <li><a href="{{ url_for('rules') }}">Rules</a></li>
+            <li><button class="logout-btn" onclick="logout()">Logout</button></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="content">
+        <h1>Add Blocker</h1>
+        <ul>
+            {% for data in addblocker_data %}
+                <li>
+                    <p>Device: {{ data['device'] }}</p>
+                    <p>Status: {{ data['status'] }}</p>
+                    <hr>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Button to enable the ad blocker -->
+        <button id="enableAdBlockerBtn">Enable Ad Blocker</button>
+
+        <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+    </section>
+
+    <!-- JavaScript to handle the ad blocker enable button -->
+    <script>
+        document.getElementById('enableAdBlockerBtn').addEventListener('click', function () {
+            // Provide instructions and a link to the extension in the respective extension store
+            alert("For a better browsing experience, consider installing an ad blocker. You can find popular ad blockers on the extension store for your browser.");
+
+            // You can also provide links to specific extensions for different browsers
+            // For example, for Adblock Plus on Chrome:
+            window.open('https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bl/cfhdojbkjhnklbpkdaibdccddilifddb', '_blank');
+        });
+
+        function logout() {
+            window.location.href = "{{ url_for('logout') }}";
+        }
+    </script>
+
+</body>
+</html>

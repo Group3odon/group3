@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation Rules</title>
+    <style>
+        /* Add your styling here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+        }
+
+        nav {
+            background-color: #111;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the left */
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0; /* Position on the left side */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ccc;
+        }
+
+        section.content {
+            margin: 20px auto; /* Center the content horizontally */
+            max-width: 800px; /* Set a maximum width for the content */
+            width: 100%; /* Make sure it takes full width up to the max-width */
+        }
+
+        section.content h1 {
+            color: #333;
+            margin-bottom: 10px; /* Added margin */
+            font-size: 24px; /* Increased font size */
+        }
+
+        section.content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        section.content li {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        section.content hr {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+
+        .logout-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Energy Consumption</a></li>
+            <li><a href="{{ url_for('add_blocker') }}">Add Blocker</a></li>
+            <li><a href="{{ url_for('view_complaints') }}">Complaints</a></li>
+            <li><a href="{{ url_for('rules') }}">Rules</a></li> <!-- New button -->
+            <li><button class="logout-btn" onclick="logout()">Logout</button></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="content">
+        <h1>Accommodation Rules</h1>
+        <ul>
+            <li>No loud noises after 10:00 PM.</li>
+            <li>Guests are not allowed after 11:00 PM.</li>
+            <li>Smoking is strictly prohibited inside the accommodation.</li>
+            <li>Pets are not allowed in the premises.</li>
+            <li>Keep common areas clean and tidy.</li>
+            <!-- Add more rules as needed -->
+        </ul>
+    </section>
+
+    <script>
+        function logout() {
+            window.location.href = "{{ url_for('logout') }}";
+        }
+    </script>
+</body>
+</html>
